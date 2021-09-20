@@ -1,0 +1,17 @@
+version: "3.7"
+
+services:
+  db:
+    image: postgres:13
+    init: true
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    volumes:
+      - "db:/var/lib/postgresql/data:delegated"
+    environment:
+      POSTGRES_USER: live_chat
+      POSTGRES_PASSWORD: live_chat
+
+volumes:
+  db:

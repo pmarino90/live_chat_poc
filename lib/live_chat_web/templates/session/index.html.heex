@@ -1,0 +1,5 @@
+<%= for session <- @sessions do %>
+
+<%= link session.name, to: Routes.session_path(@conn, :show, session.id) %>
+
+<% end %>
