@@ -20,14 +20,12 @@ defmodule LiveChatWeb.SessionChannel do
         online_at: inspect(System.system_time(:second))
       })
 
-    IO.inspect(Presence.list(socket))
-
     push(socket, "presence_state", Presence.list(socket))
     {:noreply, socket}
   end
 
   def handle_in("message", %{"body" => body}, socket) do
-    broadcast!(socket, "message", %{body: body})
+    broadcast!(socket, "message", %{body: body, name: socket.assigns.name})
 
     {:noreply, socket}
   end

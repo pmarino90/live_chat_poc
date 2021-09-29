@@ -18,7 +18,9 @@ defmodule LiveChat.Sessions do
 
   """
   def list_sessions do
-    Repo.all(Session)
+    Session
+    |> order_by(:id)
+    |> Repo.all()
   end
 
   @doc """
